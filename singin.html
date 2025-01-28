@@ -1,0 +1,75 @@
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maskara Sign-In</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #001f3d;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .signin-box {
+      background-color: #003c5d;
+      border-radius: 12px;
+      padding: 30px;
+      width: 350px;
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 2px solid #005fae;
+      border-radius: 8px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #005fae;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to Maskara</h1>
+
+  <div class="signin-box">
+    <form id="signin-form">
+      <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      <button type="submit">Sign In</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('signin-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const password = document.getElementById('password').value;
+
+      if (password === '0000') {
+        window.location.href = 'soft.html';
+      } else {
+        alert('Incorrect password! Please try again.');
+      }
+    });
+  </script>
+
+</body>
+</html>

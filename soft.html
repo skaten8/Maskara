@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ideoi</title>
+</head>
+<body>
+    <style>
+        .search-container {
+            margin-bottom: 20px;
+            background-color: rgb(3, 14, 14);
+            border-radius: 30px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 250px;
+    }
+  
+  .video-container {
+      border-radius: 30px;
+      overflow: hidden;
+      min-height: max-content;
+      gap: 20px;
+      margin-bottom: 35px;
+      width: 250;
+        }
+    
+    .video-list{
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+        justify-content: center;
+        }
+    
+    /* Title Style (Below the video) */
+        .video-title {
+          font-size: 14px;
+          font-weight: bold;
+      color: #020000;
+          padding: 10px;
+          background-color: #333;
+      text-align: center;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+      display: block;
+        }
+    
+    /* Video Style */
+        video {
+          width: 100%;
+          height: 100%;
+      display: block;
+        }
+        .video-container {
+      width: 280px;
+      height: 250px;
+      background-color: #000;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+    .video-title {
+      font-size: 14px;
+      font-weight: bold;
+      color: #fff;
+      padding: 10px;
+      background-color: #050101;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      margin-top: 5px;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: darkblue;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      
+      margin: 35px;
+      
+    }
+      </style>
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search for videos..." oninput="searchVideos()">
+      </div>
+
+      <div id="video-list" class="video-list">
+        <!-- Video Items will be dynamically inserted here -->
+      </div>
+
+
+  <script>
+    // Predefined array of local video files (the video paths are relative to your project folder)
+    const videos = [
+      { title: 'Introduction to JavaScript', src: 'videos/video1.mkv' },
+      { title: 'HTML5 Basics', src: 'videos/video1.mp4' },
+      { title: 'CSS Flexbox Tutorial', src: 'vi/video3.mp4deos' },
+      { title: 'React JS for Beginners', src: 'videos/video4.mp4' },
+      { title: 'Node.js and Express', src: 'videos/video5.mp4' },
+      { title: 'Node.js and Express', src: 'videos/video5.mp4' },
+      { title: 'Introduction to JavaScript', src: 'videos/video1.mkv' },
+      { title: 'Introduction to JavaScript', src: 'videos/video1.mkv' },
+      { title: 'Introduction to JavaScript', src: 'videos/video1.mkv' },
+      { title: 'Introduction to JavaScript', src: 'videos/video1.mkv' },
+      { title: 'Introduction to JavaScript', src: 'videos/video1.mkv' },
+      { title: 'Introduction to JavaScript', src: 'videos/video1.mkv' },
+      { title: 'Introduction to JavaScript', src: 'videos/video1.mkv' },
+      { title: 'Introduction to JavaScript', src: 'videos/video1.mkv' },
+      { title: 'Introduction to JavaScript', src: 'videos/video1.mkv' },
+      { title: 'Introduction to JavaScript', src: 'videos/video1.mkv' },
+      { title: 'Introduction to JavaScript', src: 'videos/video1.mkv' },
+      { title: 'Introduction to JavaScript', src: 'videos/video1.mkv' },
+      { title: 'Introduction to JavaScript', src: 'videos/video1.mkv' },
+    ];
+
+    // Function to display videos
+    function displayVideos(videoList) {
+      const videoContainer = document.getElementById('video-list');
+      videoContainer.innerHTML = ''; // Clear previous videos
+
+      videoList.forEach(video => {
+        const videoElement = document.createElement('div');
+        videoElement.classList.add('video-container');
+
+        // Create the video player
+        const videoPlayer = document.createElement('video');
+        videoPlayer.setAttribute('controls', 'true');
+        const source = document.createElement('source');
+        source.setAttribute('src', video.src);
+        source.setAttribute('type', 'video/mp4');
+        videoPlayer.appendChild(source);
+
+        // Create the video title
+        const title = document.createElement('div');
+        title.classList.add('video-title');
+        title.textContent = video.title;
+
+        // Append the video player and title to the video element
+        videoElement.appendChild(videoPlayer);
+        videoElement.appendChild(title);
+
+        // Add the video element to the video list
+        videoContainer.appendChild(videoElement);
+      });
+    }
+
+    // Function to search through videos
+    function searchVideos() {
+      const searchTerm = document.getElementById('search-input').value.toLowerCase();
+
+      // Filter the videos based on the search term (title)
+      const filteredVideos = videos.filter(video =>
+        video.title.toLowerCase().includes(searchTerm)
+      );
+
+      // Display the filtered videos
+      displayVideos(filteredVideos);
+    }
+
+    // Initial display of all videos
+    displayVideos(videos);
+  </script>
+
+      
+    </body>
+</html>
